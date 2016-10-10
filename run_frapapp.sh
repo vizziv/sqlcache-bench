@@ -4,32 +4,32 @@ killall testing.exe testing_easier.exe
 dropdb frap 2> /dev/null
 createdb frap
 
-#urweb ./frapapp/testing
+urweb ~/frapapp/testing
 psql frap -f frap.sql
 
-./frapapp/testing.exe -q -t1 &
+~/frapapp/testing.exe -q -t1 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_baseline_concurrency1.txt
 killall testing.exe
-./frapapp/testing.exe -q -t4 &
+~/frapapp/testing.exe -q -t4 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_baseline_concurrency4.txt
 killall testing.exe
-./frapapp/testing.exe -q -t8 &
+~/frapapp/testing.exe -q -t8 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c8 -t8 -d10 http://localhost:8080/Private/student >frapapp_baseline_concurrency8.txt
 killall testing.exe
-./frapapp/testing.exe -q -t12 &
+~/frapapp/testing.exe -q -t12 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c12 -t12 -d10 http://localhost:8080/Private/student >frapapp_baseline_concurrency12.txt
 killall testing.exe
 
 echo "DELETE FROM uw_lectureforum_threads;" | psql frap
-./frapapp/testing.exe -q -t4 &
+~/frapapp/testing.exe -q -t4 &
 sleep 2
 
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_baseline_withwrites0.txt
@@ -52,7 +52,7 @@ killall frap.sh
 killall testing.exe
 
 echo "DELETE FROM uw_lectureforum_threads;" | psql frap
-./frapapp/testing.exe -q -t1 &
+~/frapapp/testing.exe -q -t1 &
 sleep 2
 
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_baseline_withwrites1_0.txt
@@ -74,31 +74,31 @@ killall frap.sh
 
 killall testing.exe
 
-urweb -sqlcache ./frapapp/testing
+urweb -sqlcache ~/frapapp/testing
 
-./frapapp/testing.exe -q -t1 &
+~/frapapp/testing.exe -q -t1 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_sqlcache_concurrency1.txt
 killall testing.exe
-./frapapp/testing.exe -q -t4 &
+~/frapapp/testing.exe -q -t4 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_sqlcache_concurrency4.txt
 killall testing.exe
-./frapapp/testing.exe -q -t8 &
+~/frapapp/testing.exe -q -t8 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c8 -t8 -d10 http://localhost:8080/Private/student >frapapp_sqlcache_concurrency8.txt
 killall testing.exe
-./frapapp/testing.exe -q -t12 &
+~/frapapp/testing.exe -q -t12 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c12 -t12 -d10 http://localhost:8080/Private/student >frapapp_sqlcache_concurrency12.txt
 killall testing.exe
 
 echo "DELETE FROM uw_lectureforum_threads;" | psql frap
-./frapapp/testing.exe -q -t4 &
+~/frapapp/testing.exe -q -t4 &
 sleep 2
 
 wrk -c4 -d4 -d10 http://localhost:8080/Private/student >frapapp_sqlcache_withwrites0.txt
@@ -121,7 +121,7 @@ killall frap.sh
 killall testing.exe
 
 echo "DELETE FROM uw_lectureforum_threads;" | psql frap
-./frapapp/testing.exe -q -t1 &
+~/frapapp/testing.exe -q -t1 &
 sleep 2
 
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_sqlcache_withwrites1_0.txt
@@ -143,31 +143,31 @@ killall frap.sh
 
 killall testing.exe
 
-urweb -dyncache ./frapapp/testing
+urweb -dyncache ~/frapapp/testing
 
-./frapapp/testing.exe -q -t1 &
+~/frapapp/testing.exe -q -t1 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_dyncache_concurrency1.txt
 killall testing.exe
-./frapapp/testing.exe -q -t4 &
+~/frapapp/testing.exe -q -t4 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_dyncache_concurrency4.txt
 killall testing.exe
-./frapapp/testing.exe -q -t8 &
+~/frapapp/testing.exe -q -t8 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c8 -t8 -d10 http://localhost:8080/Private/student >frapapp_dyncache_concurrency8.txt
 killall testing.exe
-./frapapp/testing.exe -q -t12 &
+~/frapapp/testing.exe -q -t12 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c12 -t12 -d10 http://localhost:8080/Private/student >frapapp_dyncache_concurrency12.txt
 killall testing.exe
 
 echo "DELETE FROM uw_lectureforum_threads;" | psql frap
-./frapapp/testing.exe -q -t4 &
+~/frapapp/testing.exe -q -t4 &
 sleep 2
 
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_dyncache_withwrites0.txt
@@ -190,7 +190,7 @@ killall frap.sh
 killall testing.exe
 
 echo "DELETE FROM uw_lectureforum_threads;" | psql frap
-./frapapp/testing.exe -q -t1 &
+~/frapapp/testing.exe -q -t1 &
 sleep 2
 
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_dyncache_withwrites1_0.txt
@@ -212,71 +212,71 @@ killall frap.sh
 
 killall testing.exe
 
-urweb ./frapapp/testing_easier
-psql frap -f ./frapapp/testing.sql
+urweb ~/frapapp/testing_easier
+psql frap -f ~/frapapp/testing.sql
 
-./frapapp/testing_easier.exe -q -t1 &
+~/frapapp/testing_easier.exe -q -t1 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_easier_baseline_concurrency1.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t4 &
+~/frapapp/testing_easier.exe -q -t4 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_easier_baseline_concurrency4.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t8 &
+~/frapapp/testing_easier.exe -q -t8 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c8 -t8 -d10 http://localhost:8080/Private/student >frapapp_easier_baseline_concurrency8.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t12 &
+~/frapapp/testing_easier.exe -q -t12 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c12 -t12 -d10 http://localhost:8080/Private/student >frapapp_easier_baseline_concurrency12.txt
 killall testing_easier.exe
 
-urweb -dyncache ./frapapp/testing_easier
+urweb -dyncache ~/frapapp/testing_easier
 
-./frapapp/testing_easier.exe -q -t1 &
+~/frapapp/testing_easier.exe -q -t1 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_easier_dyncache_concurrency1.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t4 &
+~/frapapp/testing_easier.exe -q -t4 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_easier_dyncache_concurrency4.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t8 &
+~/frapapp/testing_easier.exe -q -t8 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c8 -t8 -d10 http://localhost:8080/Private/student >frapapp_easier_dyncache_concurrency8.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t12 &
+~/frapapp/testing_easier.exe -q -t12 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c12 -t12 -d10 http://localhost:8080/Private/student >frapapp_easier_dyncache_concurrency12.txt
 killall testing_easier.exe
 
-urweb -sqlcache ./frapapp/testing_easier
+urweb -sqlcache ~/frapapp/testing_easier
 
-./frapapp/testing_easier.exe -q -t1 &
+~/frapapp/testing_easier.exe -q -t1 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c1 -t1 -d10 http://localhost:8080/Private/student >frapapp_easier_sqlcache_concurrency1.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t4 &
+~/frapapp/testing_easier.exe -q -t4 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c4 -t4 -d10 http://localhost:8080/Private/student >frapapp_easier_sqlcache_concurrency4.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t8 &
+~/frapapp/testing_easier.exe -q -t8 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c8 -t8 -d10 http://localhost:8080/Private/student >frapapp_easier_sqlcache_concurrency8.txt
 killall testing_easier.exe
-./frapapp/testing_easier.exe -q -t12 &
+~/frapapp/testing_easier.exe -q -t12 &
 sleep 2
 wrk -c12 -t12 -d2 http://localhost:8080/Private/student
 wrk -c12 -t12 -d10 http://localhost:8080/Private/student >frapapp_easier_sqlcache_concurrency12.txt
