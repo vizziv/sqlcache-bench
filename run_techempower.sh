@@ -5,7 +5,7 @@ dropdb techemp 2> /dev/null
 createdb techemp
 
 urweb ./techemp/bench
-psql techemp -f ./techemp/create-postgres.sql
+cat ./techemp/create-postgres.sql | psql techemp
 
 ./techemp/bench.exe -k -q -t12 &
 sleep 2

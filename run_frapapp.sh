@@ -5,7 +5,7 @@ dropdb frap 2> /dev/null
 createdb frap
 
 urweb ~/frapapp/testing
-psql frap -f frap.sql
+cat frap.sql | psql frap
 
 ~/frapapp/testing.exe -q -t1 &
 sleep 2
@@ -213,7 +213,6 @@ killall frap.sh
 killall testing.exe
 
 urweb ~/frapapp/testing_easier
-psql frap -f ~/frapapp/testing.sql
 
 ~/frapapp/testing_easier.exe -q -t1 &
 sleep 2

@@ -5,7 +5,7 @@ dropdb jfac 2> /dev/null
 createdb jfac
 
 urweb ~/upo/examples/jfac
-psql jfac -f ~/upo/examples/jfac.sql
+cat ~/upo/examples/jfac.sql | psql jfac
 ocaml jfac.ml 100 100 | psql jfac
 
 ~/upo/examples/jfac.exe -q -t1 &
