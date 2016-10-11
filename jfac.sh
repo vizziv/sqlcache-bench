@@ -12,6 +12,6 @@ do
 
     let "BIT = $RANDOM % 2"
 
-    curl "http://localhost:8080/jfac/VoteRestaurant/${COMMANDS[$BIT]}//$NEIB/$RESTE"
+    wget "http://localhost:8080/jfac/VoteRestaurant/${COMMANDS[$BIT]}//$NEIB/$RESTE" -q -O /dev/null
     sleep $DELAY
 done

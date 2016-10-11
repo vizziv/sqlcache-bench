@@ -8,7 +8,7 @@ urweb ./techemp/bench
 cat ./techemp/create-postgres.sql | psql techemp
 
 ./techemp/bench.exe -k -q -t12 &
-sleep 2
+sleep 4
 
 wrk -c12 -t12 -d2 http://localhost:8080/fortunes
 wrk -c12 -t12 -d10 http://localhost:8080/fortunes >fortunes_baseline.txt
@@ -27,7 +27,7 @@ killall bench.exe
 urweb -sqlcache ./techemp/bench
 
 ./techemp/bench.exe -k -q -t12 &
-sleep 2
+sleep 4
 
 wrk -c12 -t12 -d2 http://localhost:8080/fortunes
 wrk -c12 -t12 -d10 http://localhost:8080/fortunes >fortunes_sqlcache.txt
@@ -46,7 +46,7 @@ killall bench.exe
 urweb -dyncache ./techemp/bench
 
 ./techemp/bench.exe -k -q -t12 &
-sleep 2
+sleep 4
 
 wrk -c12 -t12 -d2 http://localhost:8080/fortunes
 wrk -c12 -t12 -d10 http://localhost:8080/fortunes >fortunes_dyncache.txt
