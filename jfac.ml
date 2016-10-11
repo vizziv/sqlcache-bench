@@ -39,7 +39,7 @@ let rec all_times n =
 let main args =
   match args with
   | [|_; users; restaurants|] ->
-    Printf.printf "INSERT INTO uw_user VALUES('admin', 'Admin', TRUE, FALSE);\n";
+    Printf.printf "INSERT INTO uw_user VALUES('Admin', 'Admin', TRUE, TRUE);\n";
     all_times 30;
     repeat one_user (int_of_string users);
     repeat one_restaurant (int_of_string restaurants)
