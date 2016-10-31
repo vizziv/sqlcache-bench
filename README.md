@@ -1,5 +1,5 @@
 # Sqlcache Benchmarks
-This is the artifact accompanying the POPL'16 paper "A Program Optimization for Automatic Database Result Caching".
+This is the artifact accompanying the POPL'17 paper "A Program Optimization for Automatic Database Result Caching".
 
 Sqlcache is a new feature for the [Ur/Web](http://www.impredicative.com/ur/) programming language that automatically instruments applications with caching of SQL query results and sound invalidation of those caches.
 The [instructions.sh](https://github.com/vizziv/sqlcache-bench/blob/master/instructions.sh) file in this repository is a list of commands that installs Ur/Web with Sqlcache, its benchmarks, and dependencies.
